@@ -18,4 +18,5 @@ namespace MUS1062_Homework_SQL
         public string 電話 { set; get; }
         public string 是否為健保特約藥局 { set; get; }
     }
+
 }
