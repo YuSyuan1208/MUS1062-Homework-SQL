@@ -43,10 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JackDBHelper.cs" />
+    <Compile Include="FanQDBHelper.cs" />
+    <Compile Include="NanDBHelper.cs" />
     <Compile Include="Pharmacy.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rainfall.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

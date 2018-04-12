@@ -14,4 +14,5 @@ namespace MUS1062_Homework_SQL
         public string 紫外線指數 { set; get; }
         public string 發布時間 { set; get; }
     }
+
 }
