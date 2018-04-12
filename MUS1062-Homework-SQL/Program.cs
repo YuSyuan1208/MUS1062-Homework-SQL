@@ -11,8 +11,8 @@ namespace MUS1062_Homework_SQL
        
         static void Main(string[] args)
         {
-            DBHelper<Pharmacy> nanDB = new NanDBHelper();
-            nanDB.ShowData(nanDB.ReadData("地址縣市別", "臺南市"));
+            DBHelper<Pharmacy> jackDB = new JackDBHelper();
+            jackDB.ShowData(jackDB.ReadData("地址縣市別", "臺南市"));
             Console.ReadKey();
         }
        
