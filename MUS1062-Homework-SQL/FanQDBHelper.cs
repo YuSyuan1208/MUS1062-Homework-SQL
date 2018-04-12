@@ -18,7 +18,7 @@ namespace MUS1062_Homework_SQL
 			connection.Open();
 			SqlCommand cmd = connection.CreateCommand();
 			cmd.CommandType = System.Data.CommandType.Text;
-			cmd.CommandText = string.Format($"INSERT INTO Pharmacy (Id,地點名稱,地點縣市別,地點鄉鎮市區,累積雨量) " +
+			cmd.CommandText = string.Format($"INSERT INTO RainFall (Id,地點名稱,地點縣市別,地點鄉鎮市區,累積雨量) " +
 														$"values ('{count}',N'{rain.地點名稱}',N'{rain.地點縣市別}',N'{rain.地點鄉鎮市區}',N'{rain.累積雨量}')");
 			cmd.ExecuteNonQuery();
 			connection.Close();
@@ -28,7 +28,7 @@ namespace MUS1062_Homework_SQL
 			connection.Open();
 			SqlCommand cmd = connection.CreateCommand();
 			cmd.CommandType = System.Data.CommandType.Text;
-			cmd.CommandText = string.Format($"SELECT * FROM Pharmacy WHERE {col_name}=N'{name}'");
+			cmd.CommandText = string.Format($"SELECT * FROM RainFall WHERE {col_name}=N'{name}'");
 			SqlDataReader reader = cmd.ExecuteReader();
 			List<rainfall> rain = new List<rainfall>();
 			while (reader.Read())
@@ -47,7 +47,7 @@ namespace MUS1062_Homework_SQL
 		}
 		public List<rainfall> Xml_Load()
 		{
-			XElement xml = XElement.Load("O-A0002-001.xml");
+			XElement xml = XElement.Load(@".\..\..\O-A0002-001.xml");
 			List<rainfall> rain = new List<rainfall>();
 
 			XNamespace xmln = @"urn:cwb:gov:tw:cwbcommon:0.1";
@@ -79,7 +79,7 @@ namespace MUS1062_Homework_SQL
 		public void ShowData(List<rainfall> list)
 		{
 			list.ForEach(r => {
-				Console.WriteLine("地點名稱:{0}\n地址:{1}\n日累積雨量:{2}------------", r.地點名稱, r.地點縣市別 + r.地點鄉鎮市區 + r.累積雨量);
+				Console.WriteLine("地點名稱:{0}\n地址:{1}\n日累積雨量:{2}------------", r.地點名稱, r.地點縣市別 + r.地點鄉鎮市區 , r.累積雨量);
 			});
 		}
 	}
