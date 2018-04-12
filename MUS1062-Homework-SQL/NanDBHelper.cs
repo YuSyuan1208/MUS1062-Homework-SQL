@@ -14,6 +14,7 @@ namespace MUS1062_Homework_SQL
         SqlConnection connection = new SqlConnection(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = HomeworkDB; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
         public void InsertData(Pharmacy ph)
         {
+            count++;
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = System.Data.CommandType.Text;
