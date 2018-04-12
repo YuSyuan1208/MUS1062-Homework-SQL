@@ -14,8 +14,8 @@ namespace MUS1062_Homework_SQL
         SqlConnection connection = new SqlConnection(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = HomeworkDB; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
         public void InsertData(Pharmacy ph)
         {
-			count++;
-			connection.Open();
+            count++;
+            connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = string.Format($"INSERT INTO Pharmacy (Id,機構狀態,機構名稱,地址縣市別,地址鄉鎮市區,地址街道巷弄號,負責人姓名,負責人性別,電話,是否為健保特約藥局) " +
