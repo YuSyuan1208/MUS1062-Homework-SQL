@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JackDBHelper.cs" />
     <Compile Include="FanQDBHelper.cs" />
     <Compile Include="NanDBHelper.cs" />
     <Compile Include="Pharmacy.cs" />
