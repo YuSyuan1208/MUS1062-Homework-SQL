@@ -8,7 +8,7 @@ namespace MUS1062_Homework_SQL
 {
     class Pharmacy
     {
-        public string 機構狀態 { internal set; get; }
+        public string 機構狀態 { set; get; }
         public string 機構名稱 { set; get; }
         public string 地址縣市別 { set; get; }
         public string 地址鄉鎮市區 { set; get; }
