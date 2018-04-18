@@ -11,8 +11,8 @@ namespace MUS1062_Homework_SQL
 	class FnaQDBHelper : DBHelper<rainfall>
 	{
 		static int count = 0;
-		SqlConnection connection = new SqlConnection(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = HomeworkDB; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
-		public void InsertData(rainfall rain)
+        SqlConnection connection = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.FullName + @"\AppData\HomeWorkDB.mdf;Integrated Security = True");
+        public void InsertData(rainfall rain)
 		{
 			count++;
 			connection.Open();
@@ -47,7 +47,7 @@ namespace MUS1062_Homework_SQL
 		}
 		public List<rainfall> Xml_Load()
 		{
-			XElement xml = XElement.Load(@".\..\..\O-A0002-001.xml");
+			XElement xml = XElement.Load(@".\..\..\AppData\O-A0002-001.xml");
 			List<rainfall> rain = new List<rainfall>();
 
 			XNamespace xmln = @"urn:cwb:gov:tw:cwbcommon:0.1";
@@ -79,7 +79,7 @@ namespace MUS1062_Homework_SQL
 		public void ShowData(List<rainfall> list)
 		{
 			list.ForEach(r => {
-				Console.WriteLine("地點名稱:{0}\n地址:{1}\n日累積雨量:{2}------------", r.地點名稱, r.地點縣市別 + r.地點鄉鎮市區 , r.累積雨量);
+				Console.WriteLine("地點名稱:{0}\n地址:{1}\n日累積雨量:{2}\n------------", r.地點名稱, r.地點縣市別 + r.地點鄉鎮市區 , r.累積雨量);
 			});
 		}
 	}

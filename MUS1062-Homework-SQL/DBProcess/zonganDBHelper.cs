@@ -11,14 +11,14 @@ namespace MUS1062_Homework_SQL
     class zonganDBHelper : DBHelper<Career>
     {
         static int count = 0;
-        SqlConnection connection = new SqlConnection(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = HomeworkDB; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+        SqlConnection connection = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.FullName + @"\AppData\HomeWorkDB.mdf;Integrated Security = True");
         public void InsertData(Career car)
         {
             count++;
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = string.Format($"INSERT INTO RainFall (Id,資料集名稱,服務分類) " +
+            cmd.CommandText = string.Format($"INSERT INTO LiverBurst (Id,資料集名稱,服務分類) " +
                                                         $"values ('{count}',N'{car.資料集名稱}',N'{car.服務分類}')");
             cmd.ExecuteNonQuery();
             connection.Close();
@@ -28,7 +28,7 @@ namespace MUS1062_Homework_SQL
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = string.Format($"SELECT * FROM Pharmacy WHERE {col_name}=N'{name}'");
+            cmd.CommandText = string.Format($"SELECT * FROM LiverBurst WHERE {col_name}=N'{name}'");
             SqlDataReader reader = cmd.ExecuteReader();
             List<Career> car = new List<Career>();
             while (reader.Read())
@@ -46,7 +46,7 @@ namespace MUS1062_Homework_SQL
         }
         public List<Career> Xml_Load()
         {
-            XElement xml = XElement.Load("datas.xml");
+            XElement xml = XElement.Load(@".\..\..\AppData\zongan.xml");
             List<Career> car = new List<Career>();
             xml.Descendants("node").ToList().ForEach(row => {
                 Career ca = new Career

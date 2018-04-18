@@ -11,9 +11,11 @@ namespace MUS1062_Homework_SQL
     class NanDBHelper : DBHelper<Pharmacy>
     {
         static int count = 0;
-        SqlConnection connection = new SqlConnection(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = HomeworkDB; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+        string path = System.Environment.CurrentDirectory;
+        SqlConnection connection = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.FullName + @"\AppData\HomeWorkDB.mdf;Integrated Security = True");
         public void InsertData(Pharmacy ph)
         {
+            
             count++;
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
@@ -52,7 +54,7 @@ namespace MUS1062_Homework_SQL
         }
         public List<Pharmacy> Xml_Load()
         {
-            XElement xml = XElement.Load("datas.xml");
+            XElement xml = XElement.Load(@".\..\..\AppData\datas.xml");
             List<Pharmacy> phar = new List<Pharmacy>();
             xml.Descendants("row").ToList().ForEach(row => {
                 Pharmacy ph = new Pharmacy
