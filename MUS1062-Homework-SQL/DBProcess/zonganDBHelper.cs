@@ -64,5 +64,25 @@ namespace MUS1062_Homework_SQL
                 Console.WriteLine("資料集名稱:{0}\n服務分類:{1}\n", ca.資料集名稱, ca.服務分類);
             });
         }
+
+        public void UpdateData(int id, Career item)
+        {
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = string.Format($"UPDATE LiverBurst SET 資料集名稱 = N'{item.資料集名稱}',服務分類 = N'{item.服務分類}' WHERE Id={id}");
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public void DeleteData(int id)
+        {
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = string.Format($"DELETE FROM LiverBurst WHERE Id={id}");
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }

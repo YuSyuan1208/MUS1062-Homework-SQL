@@ -79,5 +79,25 @@ namespace MUS1062_Homework_SQL
                  Console.WriteLine("機構名稱:{0}\n地址:{1}\n------------", ph.機構名稱, ph.地址縣市別 + ph.地址鄉鎮市區 + ph.地址街道巷弄號);
              });
         }
+
+        public void UpdateData(int id, Pharmacy item)
+        {
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = string.Format($"UPDATE Pharmacy SET 機構狀態 = N'{item.機構狀態}',機構名稱 = N'{item.機構名稱}',地址縣市別 = N'{item.地址縣市別}',地址鄉鎮市區 = N'{item.地址鄉鎮市區}',地址街道巷弄號 = N'{item.地址街道巷弄號}',負責人姓名 = N'{item.負責人姓名}',負責人性別 = N'{item.負責人性別}',電話 = N'{item.電話}',是否為健保特約藥局 = N'{item.是否為健保特約藥局}' WHERE Id = {id} ");                                             
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public void DeleteData(int id)
+        {
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = string.Format($"DELETE FROM Pharmacy WHERE Id={id}");
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }

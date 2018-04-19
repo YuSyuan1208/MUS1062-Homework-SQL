@@ -82,5 +82,26 @@ namespace MUS1062_Homework_SQL
 				Console.WriteLine("地點名稱:{0}\n地址:{1}\n日累積雨量:{2}\n------------", r.地點名稱, r.地點縣市別 + r.地點鄉鎮市區 , r.累積雨量);
 			});
 		}
-	}
+
+        public void UpdateData(int id, rainfall item)
+        {
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = string.Format($"UPDATE RainFall SET  地點名稱 = N'{item.地點名稱}' , 地點縣市別 = N'{item.地點縣市別}' ,地點鄉鎮市區 = N'{item.地點鄉鎮市區}' ,累積雨量 = N'{item.累積雨量}' " +
+                $"WHERE Id={id}");
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public void DeleteData(int id)
+        {
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = string.Format($"DELETE FROM RainFall WHERE Id={id}");
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+    }
 }

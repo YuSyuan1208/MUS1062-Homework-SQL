@@ -70,5 +70,25 @@ namespace MUS1062_Homework_SQL
                  Console.WriteLine("城市:{0}\n地區:{1}\nUVI:{2}", ph.城市, ph.發布地區, ph.紫外線指數);
              });
         }
+
+        public void UpdateData(int id, UVIResource item)
+        {
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = string.Format($"UPDATE UVIResource SET 城市=N'{item.城市}',發布機關 = N'{item.發布機關}',發布地區 = N'{item.發布地區}',紫外線指數 = N'{item.紫外線指數}',發布時間 = N'{item.發布時間}' WHERE Id={id}");
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public void DeleteData(int id)
+        {
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = string.Format($"DELETE FROM UVIResource WHERE Id={id}");
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }

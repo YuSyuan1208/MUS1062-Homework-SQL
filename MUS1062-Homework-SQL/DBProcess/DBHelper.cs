@@ -13,5 +13,7 @@ namespace MUS1062_Homework_SQL
         void InsertData(T item);
         List<T> ReadData(String col_name, String name);
         void ShowData(List<T> list);
+        void UpdateData(int id,T item);
+        void DeleteData(int id);
     }
 }
