@@ -57,11 +57,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBProcess\JackDBHelper.cs" />
     <Compile Include="Models\Career.cs" />
     <Compile Include="DBProcess\FanQDBHelper.cs" />
     <Compile Include="DBProcess\NanDBHelper.cs" />
     <Compile Include="Models\Pharmacy.cs" />
     <Compile Include="DBProcess\DBHelper.cs" />
+    <Compile Include="Models\UVIResource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\rainfall.cs" />

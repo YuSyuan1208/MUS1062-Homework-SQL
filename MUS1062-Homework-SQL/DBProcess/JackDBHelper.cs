@@ -11,7 +11,8 @@ namespace MUS1062_Homework_SQL
     class JackDBHelper : DBHelper<UVIResource>
     {
         static int count = 0;
-        SqlConnection connection = new SqlConnection(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = HomeworkDB; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+        string path = System.Environment.CurrentDirectory;
+        SqlConnection connection = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.FullName + @"\AppData\HomeWorkDB.mdf;Integrated Security = True");
         public void InsertData(UVIResource ph)
         {
             count++;
@@ -48,16 +49,16 @@ namespace MUS1062_Homework_SQL
         }
         public List<UVIResource> Xml_Load()
         {
-            XElement xml = XElement.Load("datas.xml");
+            XElement xml = XElement.Load(@".\..\..\AppData\UVIdatas.xml");
             List<UVIResource> phar = new List<UVIResource>();
             xml.Descendants("row").ToList().ForEach(row => {
                 UVIResource ph = new UVIResource
                 {
                     城市 = row.Element("Col1").Value,
                     發布機關 = row.Element("Col2").Value,
-                    發布地區 = row.Element("Col3").Value,
-                    紫外線指數 = row.Element("Col4").Value,
-                    發布時間 = row.Element("Col5").Value,
+                    發布時間 = row.Element("Col3").Value,
+                    發布地區 = row.Element("Col4").Value,
+                    紫外線指數 = row.Element("Col5").Value,
                 };
                 phar.Add(ph);
             });
