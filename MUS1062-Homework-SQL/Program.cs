@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+
 namespace MUS1062_Homework_SQL
 {
     class Program
@@ -15,6 +16,7 @@ namespace MUS1062_Homework_SQL
             FanQ();
             Jack();
             Zongan();
+            BigGG();
             Console.WriteLine("按任意鍵繼續");
             Console.ReadKey();
         }
@@ -97,6 +99,34 @@ namespace MUS1062_Homework_SQL
             //Nan Delete
             //nanDB.UpdateData(1, pharmacy);
             //nanDB.DeleteData(1);
+        }
+        static void BigGG()
+        {
+            DBHelper<Airq> BigGGDB = new BigGGDBHelper();
+            //BigGG Insert
+            BigGGDB.Xml_Load().ForEach(x =>
+            {
+                BigGGDB.InsertData(x);
+            });
+            //BigGG search
+            BigGGDB.Xml_Load().ForEach(x => 
+            {
+                BigGGDB.InsertData(x);
+            });
+            BigGGDB.ShowData(BigGGDB.ReadData("Air_area","高雄市"));
+            //BigGG update
+            Airq aa = new Airq
+            {
+                Air_area = "美國",
+                Amp = "大便臭",
+                AQI = "8000",
+                Date = "2018/04/26"
+            };
+            BigGGDB.UpdateData(1,aa);
+            //BigGG delete
+            BigGGDB.DeleteData(1);
+
+
         }
     }
 }
