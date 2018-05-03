@@ -57,12 +57,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBProcess\BigGGDBHelper.cs" />
     <Compile Include="DBProcess\JackDBHelper.cs" />
+    <Compile Include="DBProcess\YanJiunDBHelper.cs" />
+    <Compile Include="Models\Airq.cs" />
     <Compile Include="Models\Career.cs" />
     <Compile Include="DBProcess\FanQDBHelper.cs" />
     <Compile Include="DBProcess\NanDBHelper.cs" />
     <Compile Include="Models\Pharmacy.cs" />
     <Compile Include="DBProcess\DBHelper.cs" />
+    <Compile Include="Models\Forex.cs" />
     <Compile Include="Models\UVIResource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
